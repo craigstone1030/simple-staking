@@ -1,0 +1,13 @@
+Requirements and overview:
+A staking contract that collects a specified token sent to it. For example uvwToken. Transfers will be made to qwerStaking. UvwToken balance of qwerStaking will keep on increasing. This balance is called the reward balance.
+A manager role is required in the contract.
+qwerStaking will accepting stakes/deposits from users. qwerStaking will only accept deposits when the manager starts acceptingDepsits.
+Manager should be able to call the contract to start accepting Deposits and also the manager can say how many hours to accept deposits.
+For example startStakes(30 days, 24 hours)
+Once qwerStaking starts accepting deposits, deposits/stakes will be accepted for 24 hours. Or any number of hours as specified.
+After accepting time is over qwerStaking will stop accepting deposits/stakes.
+The staking period is 30 days if startStakes(30 days, 24 hours) is called.
+At the end of the month the manager will call distribute Rewards method. This will divide all the contract reward balance proportionally to all stake holders. Rewards plus the original stake amount will be returned to the stake holders.
+After this, the manager may start the staking again by calling startStakes
+And may call for 60 days, 24 hours. So users can deposit till 24 hours and their deposit will be staked for 60 days. Rewards will accumulate for 60 days and distributed.
+Stakes will only happen one at a time. If staking starts for 30 days;  the manager cannot start again till 30 days are over and when manager has distributed rewards.
